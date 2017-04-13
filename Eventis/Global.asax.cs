@@ -1,5 +1,7 @@
-﻿using System.Linq;
-using System.Web;using System.Web.Mvc;
+﻿using Eventis.Migrations;
+using Eventis.Models.Identity;
+using System.Data.Entity;
+using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
@@ -14,6 +16,7 @@ namespace Eventis
                 new MigrateDatabaseToLatestVersion
                 <ApplicationDbContext,
                 Configuration>());
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
