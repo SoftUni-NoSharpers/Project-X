@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Eventis.Models.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace Eventis.Models
 {
@@ -51,5 +50,7 @@ namespace Eventis.Models
 
         [Required]
         public virtual ICollection<Contact> Contact { get; set; }
+
+        public Genre Genre { get; set; }
     }
 }

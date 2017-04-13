@@ -3,10 +3,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
 using Owin;
-using Eventis.Models;
-using static Eventis.Models.IdentityConfig;
+using Eventis.Models.Identity;
 
 namespace Eventis
 {

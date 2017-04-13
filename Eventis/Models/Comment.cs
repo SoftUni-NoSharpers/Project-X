@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Eventis.Models.Identity;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Eventis.Models
 {
