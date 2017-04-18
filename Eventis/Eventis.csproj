@@ -189,6 +189,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -200,17 +201,17 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
-    <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\City.cs" />
-    <Compile Include="Models\Hall.cs" />
-    <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\Contact.cs" />
-    <Compile Include="Models\Event.cs" />
-    <Compile Include="Models\Genre.cs" />
-    <Compile Include="Models\Identity\ApplicationDbContext.cs" />
+    <Compile Include="Models\Eventis\Category.cs" />
+    <Compile Include="Models\Eventis\City.cs" />
+    <Compile Include="Models\Eventis\Hall.cs" />
+    <Compile Include="Models\Eventis\Comment.cs" />
+    <Compile Include="Models\Eventis\Contact.cs" />
+    <Compile Include="Models\Eventis\Event.cs" />
+    <Compile Include="Models\Eventis\Genre.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Identity\IdentityModels.cs" />
     <Compile Include="Models\Identity\ManageViewModels.cs" />
-    <Compile Include="Models\Status.cs" />
+    <Compile Include="Models\Eventis\Status.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -269,6 +270,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Events\AllEvents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

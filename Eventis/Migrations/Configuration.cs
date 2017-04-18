@@ -6,7 +6,7 @@ namespace Eventis.Migrations
     using System.Linq;
     using System;
     using Models.Identity;
-    using Models;
+    using Eventis.Models.Eventis;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {

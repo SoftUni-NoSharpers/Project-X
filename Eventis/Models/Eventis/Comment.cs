@@ -1,7 +1,7 @@
 ﻿using Eventis.Models.Identity;
 using System.ComponentModel.DataAnnotations;
 
-namespace Eventis.Models
+namespace Eventis.Models.Eventis
 {
     public class Comment
     {

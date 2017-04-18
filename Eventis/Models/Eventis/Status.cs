@@ -1,4 +1,4 @@
-﻿namespace Eventis.Models
+﻿namespace Eventis.Models.Eventis
 {
     public enum Status
     {

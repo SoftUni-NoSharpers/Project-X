@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Eventis.Models.Eventis;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 
 namespace Eventis.Models.Identity
