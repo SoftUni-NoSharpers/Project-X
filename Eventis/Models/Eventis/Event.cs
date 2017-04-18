@@ -58,7 +58,5 @@ namespace Eventis.Models.Eventis
         [Required]
         [ForeignKey("HallId")]
         public Hall Hall { get; set; }
-
-
     }
 }

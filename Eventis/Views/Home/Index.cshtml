@@ -2,5 +2,10 @@
     ViewBag.Title = "Home Page";
 }
 
-@model Eventis.Models.Eventis.Event
+@model ICollection<Eventis.Models.Eventis.Event>
 
+@foreach (var i in Model)
+{
+    <h1>@i.Title</h1>
+    <h3>@i.Content</h3>
+}

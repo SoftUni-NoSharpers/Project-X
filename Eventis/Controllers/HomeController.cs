@@ -1,6 +1,7 @@
 ﻿using Eventis.Models.Identity;
 using System.Linq;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace Eventis.Controllers
 {
@@ -10,9 +11,11 @@ namespace Eventis.Controllers
         {
             var db = new ApplicationDbContext();
 
-            var events = db.Events.ToList();
+            var events = db.Events
+                .Include(x=>x.Contact)
+                .ToList();
 
-            return View();
+            return View(events);
         }
 
         public ActionResult About()
