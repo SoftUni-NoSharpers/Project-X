@@ -11,7 +11,13 @@ namespace Eventis.Models
         [Required]
         public string Name { get; set; }
 
+        [Required]
         public City City { get; set; }
+
+        [Required]
+        public string Adress { get; set; }
+
+
 
         public ICollection<Event> Events { get; set; }
 

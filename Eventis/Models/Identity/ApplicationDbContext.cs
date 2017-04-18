@@ -24,8 +24,6 @@ namespace Eventis.Models.Identity
 
         public virtual DbSet<Hall> Halls { get; set; }
 
-        public virtual DbSet<Ticket> Tickets { get; set; }
-
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

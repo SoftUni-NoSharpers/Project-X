@@ -6,6 +6,7 @@ namespace Eventis.Migrations
     using System.Linq;
     using System;
     using Models.Identity;
+    using Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
@@ -27,6 +28,63 @@ namespace Eventis.Migrations
                 CreateRole(context, "Administrators");
                 AddUserToRole(context, "Admin@gmail.com", "Administrators");
             }
+            if (!context.Cities.Any())
+            {
+                CreateCity(context, "SOFIA");
+                CreateCity(context, "PLOVDIV");
+                CreateCity(context, "VARNA");
+                CreateCity(context, "PERNIK");
+                CreateCity(context, "STARA ZAGORA");
+            }
+            if (!context.Categories.Any())
+            {
+                CreateCategory(context, "Music");
+                CreateCategory(context, "Movie");
+                CreateCategory(context, "Science");
+            }
+            if (!context.Genres.Any())
+            {
+                CreateGenre(context, "Pop Folk");
+                CreateGenre(context, "Rock");
+                CreateGenre(context, "Techno");
+                CreateGenre(context, "Comedy");
+                CreateGenre(context, "Horror");
+                CreateGenre(context, "Action");
+                CreateGenre(context, "Chemistry");
+                CreateGenre(context, "Math");
+                CreateGenre(context, "Physic");
+            }
+            context.SaveChanges();
+        }
+
+        private void CreateGenre(ApplicationDbContext context, string name)
+        {
+            var genre = new Genre
+            {
+                Name = name
+            };
+            context.Genres.Add(genre);
+            context.SaveChanges();
+        }
+
+        private void CreateCategory(ApplicationDbContext context, string name)
+        {
+            var category = new Category
+            {
+                Name = name
+            };
+            context.Categories.Add(category);
+            context.SaveChanges();
+        }
+
+        private void CreateCity(ApplicationDbContext context, string name)
+        {
+            var city = new City
+            {
+                Name = name
+            };
+
+            context.Cities.Add(city);
             context.SaveChanges();
         }
 

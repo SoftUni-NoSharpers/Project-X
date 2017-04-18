@@ -52,5 +52,13 @@ namespace Eventis.Models
         public virtual ICollection<Contact> Contact { get; set; }
 
         public Genre Genre { get; set; }
+
+        public int HallId { get; set; }
+
+        [Required]
+        [ForeignKey("HallId")]
+        public Hall Hall { get; set; }
+
+
     }
 }
