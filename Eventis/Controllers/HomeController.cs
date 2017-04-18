@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using Eventis.Models.Identity;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace Eventis.Controllers
 {
@@ -6,6 +8,10 @@ namespace Eventis.Controllers
     {
         public ActionResult Index()
         {
+            var db = new ApplicationDbContext();
+
+            var events = db.Events.ToList();
+
             return View();
         }
 
