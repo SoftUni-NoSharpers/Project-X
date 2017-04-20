@@ -4,6 +4,15 @@
 
 @model ICollection<Eventis.Models.Eventis.Event>
 
+<div class="jumbotron">
+    <img src="../EventisLogo/eventisweb.jpg" alt="EventisLogo">
+    <h2 class="text-center" style="color:cadetblue">EVENTS BECOME FEELINGS,FEELINGS BECOME EVENTS</h2>
+    <p class="text-center">
+        <a href="/Account/Register" class="btn btn-primary btn-lg">Register now!</a>
+    </p>
+</div>
+
+
 @foreach (var i in Model)
 {
     <h1>@i.Title</h1>

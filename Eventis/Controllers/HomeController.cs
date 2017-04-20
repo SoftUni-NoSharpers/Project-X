@@ -32,10 +32,14 @@ namespace Eventis.Controllers
         {
             var db = new ApplicationDbContext();
 
-            var categories = db.Categories.ToList();
+            var categories = db.Categories.Include(g => g.Genres).ToList();
+
+            
 
             return View(categories);
             
+
+
 
         }
     }
