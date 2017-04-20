@@ -12,12 +12,10 @@ namespace Eventis.Models.Eventis
         public string Name { get; set; }
 
         [Required]
-        public City City { get; set; }
+        public int CityId { get; set; }
 
         [Required]
         public string Adress { get; set; }
-
-
 
         public ICollection<Event> Events { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Eventis.Models.Eventis
@@ -12,5 +13,7 @@ namespace Eventis.Models.Eventis
         public string Name { get; set; }
 
         public ICollection<Hall> Halls { get; set; }
+
+        
     }
 }

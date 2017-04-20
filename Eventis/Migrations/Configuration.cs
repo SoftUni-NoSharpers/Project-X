@@ -6,7 +6,7 @@ namespace Eventis.Migrations
     using System.Linq;
     using System;
     using Models.Identity;
-    using Eventis.Models.Eventis;
+    using Models.Eventis;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
@@ -54,6 +54,36 @@ namespace Eventis.Migrations
                 CreateGenre(context, "Math", 3);
                 CreateGenre(context, "Physic", 3);
             }
+            if (!context.Halls.Any())
+            {
+                CreateHall(context, "NDK", "Sofia-Center", 1);
+                CreateHall(context, "Universiada", "Sofia-GeoMilev", 1);
+                CreateHall(context, "Arena", "Sofia-4km", 1);
+                CreateHall(context, "AnticTheathre", "Plovdiv-OldCity", 2);
+                CreateHall(context, "City Culture House", "Plovdiv, 15 Gladston Str.", 2);
+                CreateHall(context, "Onstage Session", "Plovdiv, 252 6th September Blvd.", 2);
+                CreateHall(context, "Varna Live Club", "Varna 22", 3);
+                CreateHall(context, "Open Theatre", "Varna 180", 3);
+                CreateHall(context, "Rubik Art Center", "бул. „Приморски“ 5 Варна България", 3);
+                CreateHall(context, "Bar Epicentar", "Pernik-Center", 4);
+                CreateHall(context, "Park bar", "Pernik-Center",4);
+                CreateHall(context, "Restorant Romantika", "Pernik-Center", 4);
+                CreateHall(context, "Hotel Verea", "STZ-Center", 5);
+                CreateHall(context, "Stadion Beroe", "STZ-Aiazmo", 5);
+                CreateHall(context, "Restorant Tiffany", "STZ-Center", 5);
+            }
+            context.SaveChanges();
+        }
+
+        private void CreateHall(ApplicationDbContext context, string name, string adress, int id)
+        {
+            var hall = new Hall
+            {
+                Name = name,
+                Adress = adress,
+                CityId = id
+            };
+            context.Halls.Add(hall);
             context.SaveChanges();
         }
 
