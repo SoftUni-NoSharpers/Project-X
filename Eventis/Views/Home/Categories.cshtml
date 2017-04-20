@@ -12,18 +12,30 @@
 </head>
 <body>
     <div>
-        <h1 class="text-center" > Categories</h1>
+        <h1 class="text-center"> Categories</h1>
         <br />
         <br />
-        <div class="row" >
-            
+        <div class="row">
+
             @foreach (var category in Model)
             {
-                <div class="col-md-4" >
-                    <h3 class="text-center">@category.Name</h3>
-                   
+                <div class="col-md-4">
+                    <h2 class="text-center" class="text-primary">@category.Name</h2>
+                <br />
+                    <br />
+
+                
+                    @foreach(var gen in category.Genres)
+                    {
+                        <div>
+                            <h4 class="text-center">@gen.Name</h4>
+                            <br />
+                        </div>
+
+                    }
                 </div>
             }
+            <br />
         </div>
 
     </div>
