@@ -44,24 +44,25 @@ namespace Eventis.Migrations
             }
             if (!context.Genres.Any())
             {
-                CreateGenre(context, "Pop Folk");
-                CreateGenre(context, "Rock");
-                CreateGenre(context, "Techno");
-                CreateGenre(context, "Comedy");
-                CreateGenre(context, "Horror");
-                CreateGenre(context, "Action");
-                CreateGenre(context, "Chemistry");
-                CreateGenre(context, "Math");
-                CreateGenre(context, "Physic");
+                CreateGenre(context, "Pop Folk", 1);
+                CreateGenre(context, "Rock", 1);
+                CreateGenre(context, "Techno", 1);
+                CreateGenre(context, "Comedy", 2);
+                CreateGenre(context, "Horror", 2);
+                CreateGenre(context, "Action", 2);
+                CreateGenre(context, "Chemistry", 3);
+                CreateGenre(context, "Math", 3);
+                CreateGenre(context, "Physic", 3);
             }
             context.SaveChanges();
         }
 
-        private void CreateGenre(ApplicationDbContext context, string name)
+        private void CreateGenre(ApplicationDbContext context, string name, int num)
         {
             var genre = new Genre
             {
-                Name = name
+                Name = name,
+                CategoryId = num
             };
             context.Genres.Add(genre);
             context.SaveChanges();

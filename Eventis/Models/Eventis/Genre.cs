@@ -14,6 +14,8 @@ namespace Eventis.Models.Eventis
             , MinimumLength = 3)]
         public string Name { get; set; }
 
+        public int CategoryId { get; set; }
+
         public ICollection<Event> Events { get; set; }
     }
 }
