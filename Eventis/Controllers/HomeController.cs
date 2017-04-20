@@ -12,7 +12,11 @@ namespace Eventis.Controllers
             var db = new ApplicationDbContext();
 
             var events = db.Events
+                .OrderByDescending(c=>c.Id)
+                .Take(6)
                 .Include(x=>x.Contact)
+                .Include(x=>x.Author)
+                .Include(x=>x.Category)
                 .ToList();
 
             return View(events);

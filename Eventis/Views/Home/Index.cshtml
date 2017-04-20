@@ -13,8 +13,19 @@
 </div>
 
 
-@foreach (var i in Model)
-{
-    <h1>@i.Title</h1>
-    <h3>@i.Content</h3>
-}
+<div class="row">
+    @foreach (var i in Model)
+    {
+        <div class="col-md-6">
+            <h1 class="text-center">@i.Title</h1>
+            <p class="text-center">@i.Status</p>
+            @*Picturepath*@
+
+            <div class="row">
+                <p class="col-md-4 text-center">@i.StartDate</p>
+                <p class="col-md-4 respon text-center">@i.ViewCount</p>
+                <p class="col-md-4 text-center">@i.Category.Name</p>
+            </div>
+        </div>
+    }
+</div>
