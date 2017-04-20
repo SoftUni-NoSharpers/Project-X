@@ -3,37 +3,46 @@
 @{
     ViewBag.Title = "Cities";
 }
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <div class="row, text-center" style="margin:50px">
-        <h1>CITIES</h1>
-    </div>
-    <div class="row" style="margin:50px">
-        <div class="col-md-1"></div>
-        @foreach (var city in Model)
-        {
-            <div class="col-md-2">
-                <h2>@city.Name</h2>
-            </div>
-        }
-    </div>
-    <div class="row" style="margin:50px">
-        <div class="col-md-1"></div>
-        @foreach (var city in Model)
-        {
-            <div class="col-md-2">
-                @foreach (var hall in city.Halls)
+    <div>
+        <br />
+        <div class="jumbotron">
+            <h1 class="text-center"> CITIES</h1>
+            <div class="row" style="margin-top:50px">
+                <div class="col-md-1"></div>
+                @foreach (var city in Model)
                 {
-                    @hall.Name
-                    <br />
+                    <div class="col-md-2 text-center">
+                        <h2 class="text-primary">@city.Name</h2>
+
+                    </div>
                 }
+                <div class="col-md-1"></div>
             </div>
-        }
+            <div class="row">
+                <div class="col-md-1"></div>
+                @foreach (var city in Model)
+                {
+                    <div class="col-md-2">
+                        @foreach (var hall in city.Halls)
+                        {
+                            <div>
+                                <p class="text-center">
+                                    <a href="Halls/@hall.Id" class="btn btn-primary" style="width:145px">@hall.Name</a>
+                                </p>
+                                <br />
+                            </div>
+                        }
+                    </div>
+                }
+                <div class="col-md-1"></div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
