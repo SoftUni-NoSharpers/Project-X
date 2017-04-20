@@ -3,8 +3,6 @@
     ViewBag.Title = "Categories";
 }
 
-<!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -12,32 +10,33 @@
 </head>
 <body>
     <div>
-        <h1 class="text-center"> Categories</h1>
         <br />
-        <br />
-        <div class="row">
+        <div class="jumbotron" >
 
-            @foreach (var category in Model)
-            {
-                <div class="col-md-4">
-                    <h2 class="text-center" class="text-primary">@category.Name</h2>
-                <br />
-                    <br />
-
-                
-                    @foreach(var gen in category.Genres)
-                    {
-                        <div>
-                            <h4 class="text-center">@gen.Name</h4>
-                            <br />
-                        </div>
-
-                    }
-                </div>
-            }
+            <h1 class="text-center"> Categories</h1>
             <br />
+            <br />
+            <div class="row">
+                @foreach (var category in Model)
+                {
+                    <div class="col-md-4">
+                        <h2 class="text-center" class="text-primary">@category.Name</h2>
+                        <br />
+                        <br />
+                        @foreach (var gen in category.Genres)
+                        {
+                            <div>
+                                <p class="text-center">
+                                    <a href="/Categories/@gen.Name" class="btn btn-primary btn-lg" style="width:125px" >@gen.Name</a>
+                                </p>
+                                <br />
+                            </div>
+                        }
+                    </div>
+                }
+                <br />
+            </div>
         </div>
-
     </div>
 </body>
 </html>
