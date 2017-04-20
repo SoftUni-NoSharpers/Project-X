@@ -10,7 +10,7 @@ namespace Eventis.Models.Eventis
 
         [Required]
         [StringLength(15
-            , ErrorMessage = "Genre name cannot be less than 5 symbols"
+            , ErrorMessage = "Genre name cannot be less than 3 symbols"
             , MinimumLength = 3)]
         public string Name { get; set; }
 

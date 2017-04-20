@@ -17,19 +17,13 @@ namespace Eventis.Controllers
 
             return View(events);
         }
-
-        public ActionResult About()
+        public ActionResult Cities()
         {
-            ViewBag.Message = "Your application description page.";
+            var db = new ApplicationDbContext();
 
-            return View();
-        }
+            var city = db.Cities.ToList();
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return View(city);
         }
     }
 }
