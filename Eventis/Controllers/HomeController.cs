@@ -21,7 +21,10 @@ namespace Eventis.Controllers
         {
             var db = new ApplicationDbContext();
 
-            var city = db.Cities.ToList();
+            var city = db
+                .Cities
+                .Include(h => h.Halls).
+                ToList();
 
             return View(city);
         }
