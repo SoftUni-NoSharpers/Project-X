@@ -25,5 +25,15 @@ namespace Eventis.Controllers
 
             return View(city);
         }
+        public ActionResult Categories()
+        {
+            var db = new ApplicationDbContext();
+
+            var categories = db.Categories.ToList();
+
+            return View(categories);
+            
+
+        }
     }
 }
