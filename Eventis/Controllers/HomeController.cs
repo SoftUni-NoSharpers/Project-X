@@ -48,6 +48,7 @@ namespace Eventis.Controllers
                 .Where(e => e.HallId == id)
                 .Include(c => c.Category)
                 .Include(g => g.Genre)
+                .Include(g => g.Hall)
                 .ToList();
             return View(hall);
         }
