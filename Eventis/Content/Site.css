@@ -22,3 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.mt-30{
+    margin-top:30px;
+}

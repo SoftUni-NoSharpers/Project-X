@@ -38,13 +38,7 @@ namespace Eventis.Controllers
 
             var categories = db.Categories.Include(g => g.Genres).ToList();
 
-            
-
             return View(categories);
-            
-
-
-
         }
     }
 }

@@ -1,0 +1,38 @@
+﻿@model Eventis.Models.Eventis.Event
+
+<div class="row mt-30">
+    <div class="col-md-12">
+        <h1 class="text-primary text-center">@Model.Title</h1>
+    </div>
+</div>
+<div class="row mt-30">
+    <div class="col-md-12">
+        <h1 class="text-primary text-center">Status: @Model.Status | Date: @Model.StartDate.ToString("dd MMMM , yyyy")</h1>
+    </div>
+</div>
+<div class="row mt-30 text-center">
+    <a class="btn btn-primary btn-lg text-center col-md-12 " data-toggle="collapse" data-target="#demo">Expand the event image</a>
+    <div id="demo" class="col-md-12 collapse">
+        <img src="@Model.ImagePath" class="img-responsive col-md-12 text-center" />
+    </div>
+</div>
+<div class="row mt-30">
+    <div class="col-md-12 text-center">
+        <p class="lead text-info">@Model.Content</p>
+    </div>
+</div>
+<div class="row">
+    <div class="row-md-6">
+        <p class="text-center lead">
+            Contact :<span><a class="text-info" href="mailto:@Model.Author.UserName">@Model.Author.UserName</a></span> for more information about the event.
+        </p>
+    </div>
+
+    <div class="row-md-6">
+        <p class="text-center lead">
+            @Model.ViewCount people were here to check this event so far 
+        </p>
+    </div>
+</div>
+
+

@@ -21,15 +21,20 @@ namespace Eventis.Controllers
         // GET: Events/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Event events = db.Events.Find(id);
+            var db = new ApplicationDbContext();
+
+            var events = db.Events
+                .Where(c => c.Id == id)
+                .Include(x => x.Contact)
+                .Include(x => x.Author)
+                .Include(x => x.Category)
+                .FirstOrDefault();
+
             if (events == null)
             {
                 return HttpNotFound();
             }
+
             return View(events);
         }
 
