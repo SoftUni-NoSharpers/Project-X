@@ -281,6 +281,7 @@
     <Content Include="Views\Home\Cities.cshtml" />
     <Content Include="Views\Home\Categories.cshtml" />
     <Content Include="Views\Events\Details.cshtml" />
+    <Content Include="Views\Home\Halls.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

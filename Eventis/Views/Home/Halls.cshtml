@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+@model ICollection<Eventis.Models.Eventis.Event>
+@{
+    ViewBag.Title = "Hall";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Hall</title>
+</head>
+<body>
+    <div class="row"> 
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6">
+
+                @item.Title
+                <br />
+                @item.Content
+                <br />
+                @item.Category.Name
+                <br />
+                @item.Genre.Name
+                <br />
+                @item.Hall
+                <br />
+               <img src="@item.ImagePath" class="img-responsive"/>
+                <br />
+                @item.StartDate
+                <br />
+                @item.Status
+                <br />
+                @item.ViewCount
+            </div>
+
+        }
+
+
+    </div>
+</body>
+</html>

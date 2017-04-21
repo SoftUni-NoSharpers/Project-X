@@ -40,5 +40,16 @@ namespace Eventis.Controllers
 
             return View(categories);
         }
+        public ActionResult Halls(int id)
+        {
+            var db = new ApplicationDbContext();
+
+            var hall = db.Events
+                .Where(e => e.HallId == id)
+                .Include(c => c.Category)
+                .Include(g => g.Genre)
+                .ToList();
+            return View(hall);
+        }
     }
 }
