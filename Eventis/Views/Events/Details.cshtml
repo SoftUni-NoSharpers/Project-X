@@ -11,14 +11,18 @@
     </div>
 </div>
 <div class="row mt-30 text-center">
-    <a class="btn btn-primary btn-lg text-center col-md-12 " data-toggle="collapse" data-target="#demo">Expand the event image</a>
-    <div id="demo" class="col-md-12 collapse">
-        <img src="@Model.ImagePath" class="img-responsive col-md-12 text-center" />
-    </div>
+    <a class="btn btn-primary btn-lg text-center col-md-12" onclick="myFunction()">Collapse the image</a>
+    <img id="slide" src="@Model.ImagePath" class="img-responsive col-md-12" alt="">
+    <script>
+        function myFunction() {
+            $("#slide").animate({ width: 'toggle' }, 350);
+        }
+    </script>
 </div>
 <div class="row mt-30">
     <div class="col-md-12 text-center">
         <p class="lead text-info">@Model.Content</p>
+        <p class="lead">Event genre : <span class="text-info lead">@Model.Genre.Name</span></p>
     </div>
 </div>
 <div class="row">
@@ -30,7 +34,7 @@
 
     <div class="row-md-6">
         <p class="text-center lead">
-            @Model.ViewCount people were here to check this event so far 
+            @Model.ViewCount people were here to check this event so far
         </p>
     </div>
 </div>

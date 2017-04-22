@@ -21,6 +21,28 @@ namespace Eventis.Controllers
 
             return View(events);
         }
+
+        public ActionResult ListAll(int page = 1)
+        {
+            var db = new ApplicationDbContext();
+
+            var pageSize = 6;
+
+            var events = db.Events
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .Include(x => x.Contact)
+                .Include(x => x.Author)
+                .Include(x => x.Category)
+                .Include(x => x.Genre)
+                .ToList();
+
+            ViewBag.CurrentPage = page;
+
+            return View(events);
+        }
+
         public ActionResult Cities()
         {
             var db = new ApplicationDbContext();
@@ -32,6 +54,7 @@ namespace Eventis.Controllers
 
             return View(city);
         }
+
         public ActionResult Categories()
         {
             var db = new ApplicationDbContext();

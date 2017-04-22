@@ -28,6 +28,7 @@ namespace Eventis.Controllers
                 .Include(x => x.Contact)
                 .Include(x => x.Author)
                 .Include(x => x.Category)
+                .Include(x => x.Genre)
                 .FirstOrDefault();
 
             if (events == null)
@@ -35,6 +36,8 @@ namespace Eventis.Controllers
                 return HttpNotFound();
             }
 
+            var viewBagName = db.Events.Where(i => i.Id == id);
+            ViewBag.Title = viewBagName.First().Title;
             return View(events);
         }
 
