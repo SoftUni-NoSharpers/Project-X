@@ -42,8 +42,9 @@ namespace Eventis.Controllers
         }
         public ActionResult Halls(int id)
         {
+            
             var db = new ApplicationDbContext();
-
+           
             var hall = db.Events
                 .Where(e => e.HallId == id)
                 .Include(c => c.Category)
