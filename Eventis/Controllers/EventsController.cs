@@ -36,6 +36,8 @@ namespace Eventis.Controllers
                 return HttpNotFound();
             }
 
+            var viewBagName = db.Events.Where(i => i.Id == id);
+            ViewBag.Title = viewBagName.First().Title;
             return View(events);
         }
 

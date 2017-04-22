@@ -279,12 +279,17 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Cities.cshtml" />
-
+    <Content Include="Views\Home\Categories.cshtml" />
+    <Content Include="Views\Events\Details.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\Home\ListAll.cshtml" />
+=======
+    <Content Include="Views\Home\Halls.cshtml" />
+    <Content Include="Views\Home\Genres.cshtml" />
+>>>>>>> 494d6a485d3d8c73d8f5b97a0b04e87728537ec1
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Cities\" />
-    <Folder Include="Views\Events\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

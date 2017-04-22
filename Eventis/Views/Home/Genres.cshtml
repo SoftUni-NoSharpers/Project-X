@@ -1,0 +1,71 @@
+﻿@model ICollection<Eventis.Models.Eventis.Event>
+
+
+<!DOCTYPE html>
+
+
+@{  
+    // The code bellow works only if there are events in this genre!
+    // var genreName = Model.Select(g => g.Genre.Name).First().ToString();
+    // ViewBag.Title = $"{genreName}";
+
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Genre</title>
+</head>
+<body>
+    <div class="row mt-30">
+        @if (!Model.Any())
+        {
+            <h2 class="text-center">There is no Events for this Genre!</h2>
+        }
+        @foreach (var i in Model)
+        {
+            <div class="corners col-md-6">
+                <h1 class="text-center">@i.Title</h1>
+
+                <p class="text-center">
+                    <a class="btn btn-default disabled text-center" href="/Home/Index">@i.Status</a>
+                </p>
+
+                <img src="@i.ImagePath" class="img-responsive" />
+
+                <div class="row mt-30">
+                    <p class="col-md-6 lead">
+                        View count:
+                    </p>
+                    <p class="col-md-6 text-right lead">
+                        @i.ViewCount
+                    </p>
+                </div>
+                <div class="row">
+                    <p class="col-md-6 lead">
+                        Start Date:
+                    </p>
+                    <p class="col-md-6 text-right lead">
+                        @i.StartDate
+                    </p>
+                </div>
+                <div class="row">
+                    <p class="col-md-6 lead">
+                        Category:
+                    </p>
+                    <p class="col-md-6 text-right lead">
+                        @i.Category.Name
+                    </p>
+                </div>
+
+                <p class="text-right mt-30">
+                    <a class="btn btn-info" href="/Events/Details/@i.Id">Take a look!</a>
+                </p>
+            </div>
+        }
+    </div>
+
+
+    </div>
+</body>
+</html>

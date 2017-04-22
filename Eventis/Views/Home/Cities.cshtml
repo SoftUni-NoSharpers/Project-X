@@ -15,6 +15,7 @@
             <h1 class="text-center"> CITIES</h1>
             <div class="row" style="margin-top:50px">
                 <div class="col-md-1"></div>
+
                 @foreach (var city in Model)
                 {
                     <div class="col-md-2 text-center">
@@ -29,6 +30,10 @@
                 @foreach (var city in Model)
                 {
                     <div class="col-md-2">
+                        @if (!Model.Any())
+                         {
+                            <h2 class="text-center">There is no Halls for this City!</h2>
+                        }
                         @foreach (var hall in city.Halls)
                         {
                             <div>
