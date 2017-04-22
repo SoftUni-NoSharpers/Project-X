@@ -53,5 +53,16 @@ namespace Eventis.Controllers
                 .ToList();
             return View(hall);
         }
+        public ActionResult Genres(int id)
+        {
+            var db = new ApplicationDbContext();
+
+            var genre = db.Events
+                .Where(g => g.Genre.Id == id)
+                .ToList();
+
+            return View(genre);
+        }
+       
     }
 }
