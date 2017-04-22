@@ -51,20 +51,24 @@ namespace Eventis.Controllers
                 .Include(g => g.Genre)
                 .Include(g => g.Hall)
                 .ToList();
+            var hallname = db.Halls.Where(g => g.Id == id);
+            ViewBag.Title = hallname.First().Name;
             return View(hall);
         }
         public ActionResult Genres(int id)
         {
+            
             var db = new ApplicationDbContext();
-
-           var genre = db.Events
+            var events = db.Events
                 .Where(g => g.Genre.Id == id)
                 .Include(c => c.Category)
                 .Include(g => g.Genre)
                 .Include(g => g.Hall)
                 .ToList();
 
-            return View(genre);
+            var genre = db.Genres.Where(g => g.Id == id);
+            ViewBag.Title = genre.First().Name;
+            return View(events);
         }
 
     }
