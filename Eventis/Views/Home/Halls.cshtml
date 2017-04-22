@@ -11,8 +11,13 @@
 </head>
 <body>
     <div class="row"> 
+        @if (!Model.Any())
+        {
+        <h2 class="text-center">There is no Events for this Hall!</h2>
+        }
         @foreach (var item in Model)
         {
+            
             <div class="col-md-6">
 
                 @item.Title
