@@ -12,11 +12,11 @@ namespace Eventis.Controllers
             var db = new ApplicationDbContext();
 
             var events = db.Events
-                .OrderByDescending(c=>c.Id)
+                .OrderByDescending(c => c.Id)
                 .Take(6)
-                .Include(x=>x.Contact)
-                .Include(x=>x.Author)
-                .Include(x=>x.Category)
+                .Include(x => x.Contact)
+                .Include(x => x.Author)
+                .Include(x => x.Category)
                 .ToList();
 
             return View(events);
@@ -56,12 +56,15 @@ namespace Eventis.Controllers
         {
             var db = new ApplicationDbContext();
 
-            var genre = db.Events
+           var genre = db.Events
                 .Where(g => g.Genre.Id == id)
+                .Include(c => c.Category)
+                .Include(g => g.Genre)
+                .Include(g => g.Hall)
                 .ToList();
 
             return View(genre);
         }
-       
+
     }
 }
