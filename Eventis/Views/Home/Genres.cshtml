@@ -4,8 +4,9 @@
 <!DOCTYPE html>
 
 
-@{
-    
+@{  // The code bellow works only if there are events in this genre!
+    // var genreName = Model.Select(g => g.Genre.Name).First().ToString();
+    // ViewBag.Title = $"{genreName}";
     ViewBag.Title = "Genre";
 }
 
@@ -16,6 +17,10 @@
 </head>
 <body>
     <div class="row mt-30">
+        @if (!Model.Any())
+        {
+            <h2 class="text-center">There is no Events for this Genre!</h2>
+        }
         @foreach (var i in Model)
         {
             <div class="corners col-md-6">
