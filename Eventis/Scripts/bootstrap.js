@@ -1992,6 +1992,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     $.fn.affix = old
     return this
   }
+ 
 
 
   // AFFIX DATA-API
@@ -2012,3 +2013,4 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
   })
 
 }(window.jQuery);
+

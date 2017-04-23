@@ -230,6 +230,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\backtotop.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -281,7 +282,7 @@
     <Content Include="Views\Home\Cities.cshtml" />
     <Content Include="Views\Home\Categories.cshtml" />
     <Content Include="Views\Events\Details.cshtml" />
-<Content Include="Views\Home\ListAll.cshtml" />
+    <Content Include="Views\Home\ListAll.cshtml" />
     <Content Include="Views\Home\ListAll.cshtml" />
     <Content Include="Views\Home\Halls.cshtml" />
     <Content Include="Views\Home\Genres.cshtml" />
@@ -336,7 +337,7 @@
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
-	  </ProjectExtensions>
+  </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
