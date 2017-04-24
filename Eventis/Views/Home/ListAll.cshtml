@@ -46,9 +46,12 @@
         </div>
     }
 </div>
+@{ 
+    var currentUserQuery = Request.QueryString["user"];
+}
 <div class="row">
     <p class="text-center mt-30 ">
-        <a href="/Home/ListAll?page=@(ViewBag.CurrentPage - 1)" class="btn btn-primary @(ViewBag.CurrentPage == 1 ? "disabled" : string.Empty)">Previous page</a>
-        <a href="/Home/ListAll?page=@(ViewBag.CurrentPage + 1)" class="btn btn-primary @(!Model.Any() || Model.Count < 6 ? "disabled" : string.Empty)">Next page</a>
+        <a href="/Home/ListAll?page=@(ViewBag.CurrentPage - 1)@(currentUserQuery != null ? "&user=" +currentUserQuery : string.Empty)" class="btn btn-primary @(ViewBag.CurrentPage == 1 ? "disabled" : string.Empty)">Previous page</a>
+        <a href="/Home/ListAll?page=@(ViewBag.CurrentPage + 1)@(currentUserQuery != null ? "&user=" +currentUserQuery : string.Empty)" class="btn btn-primary @(!Model.Any() || Model.Count < 6 ? "disabled" : string.Empty)">Next page</a>
     </p>
 </div>

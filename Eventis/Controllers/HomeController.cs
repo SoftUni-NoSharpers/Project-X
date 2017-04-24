@@ -22,13 +22,21 @@ namespace Eventis.Controllers
             return View(events);
         }
 
-        public ActionResult ListAll(int page = 1)
+        public ActionResult ListAll(int page = 1, string user = null)
         {
             var db = new ApplicationDbContext();
 
+            var eventsQuery = db.Events.AsQueryable();
+
             var pageSize = 6;
 
-            var events = db.Events
+            if (user != null)
+            {
+                eventsQuery = eventsQuery
+                    .Where(e => e.Author.Email == user);
+            }
+
+            var events = eventsQuery
                 .OrderByDescending(x => x.Id)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
