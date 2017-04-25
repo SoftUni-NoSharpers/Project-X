@@ -17,6 +17,7 @@ namespace Eventis.Controllers
                 .Include(x => x.Contact)
                 .Include(x => x.Author)
                 .Include(x => x.Category)
+                .Include(x => x.Genre)
                 .ToList();
 
             return View(events);

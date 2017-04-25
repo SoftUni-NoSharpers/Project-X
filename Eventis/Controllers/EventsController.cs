@@ -50,8 +50,6 @@ namespace Eventis.Controllers
         {
             var db = new ApplicationDbContext();
             var categories = db.Categories.ToList();
-            //var catecory = string.Format("{0}", Request.Form["mycat"]);
-            //var catId = db.Categories.Where(e => e.Name == catecory).FirstOrDefault().Id;
             var genres = db.Genres.ToList();
             var cities = db.Cities.ToList();
             var halls = db.Halls.ToList();
@@ -79,36 +77,21 @@ namespace Eventis.Controllers
                 var authorId = this.User.Identity.GetUserId();
                 var catecory = string.Format("{0}", Request.Form["mycat"]);
                 var catId = db.Categories.Where(e => e.Name == catecory).FirstOrDefault().Id;
-                //var TextBoxValue =;/*string.Format("{0}", Request.Form["myhall"]);*/
                 var gener = string.Format("{0}", Request.Form["mygen"]);
                 var generId = db.Genres.Where(g => g.Name == gener).FirstOrDefault().Id;
-                //var stat = string.Format("{0}", Request.Form["mystat"]);
                 var city = string.Format("{0}", Request.Form["mycity"]);
                 var cityId = db.Cities.Where(c => c.Name == city).FirstOrDefault().Id;
-
                 var hall = string.Format("{0}", Request.Form["myhall"]);
                 var hallId = db.Halls.Where(h => h.Name == hall).FirstOrDefault().Id;
-
                 var stringDate = string.Format("{0}", Request.Form["mydate"]);
-
-                var date = DateTime.ParseExact(stringDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-
-                //var currCat = this.Request.Form["mycat"];
+                var date = DateTime.ParseExact(stringDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                
                 var ev = new Event
                 {
                     Title = model.Title,
                     Content = model.Content,
                     CategoryId = catId,
-                    //Category = new Category
-                    //{
-                    //    Id = catId,
-                    //    Name = catecory
-                    //},
-                    //Genre = new Genre {
-                    //    Id = generId,
-                    //    Name = gener,
-                    //    CategoryId = catId
-                    //},
+                    Genre_Id = generId,
                     ImagePath = model.ImagePath,
                     Status = model.Status,
                     StartDate = date,

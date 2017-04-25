@@ -51,7 +51,7 @@
                             <select class="form-control" id="select myGanreDropDown div1" name="mygen" runat="server">
                                 @foreach (var gener in ViewBag.Genres)
                                 {
-                                    
+
                                     <option>@gener.Name</option>
                                 }
                             </select>
@@ -70,22 +70,17 @@
                     <div class="form-group">
                         <label for="select" class="col-lg-2 control-label md-10">Status</label>
                         <div class="col-lg-10 md-10">
-                            @*<select class="form-control" id="select" name="mystat" runat="server">*@
                             @Html.EnumDropDownListFor(m => m.Status, new { @class = "form-control", @name = "mystat" })
-                            @*<option>Upcoming</option>
-                                    <option>Open</option>
-                                    <option>Closed</option>
-
-                                </select>*@
                         </div>
                     </div>
                     <br />
 
                     <div class="form-group">
                         <label for="textBox" class="col-lg-2 control-label md-10">Start Date</label>
+
                         <div class="col-lg-10 md-10">
-                            <input class="form-control" type="text" id="datepicker" name="mydate">
-                        </div>
+                                <input class="form-control datepicker" type="text" id="datepicker" name="mydate">
+                            </div>
                     </div>
                     <br />
                 </fieldset>
@@ -120,32 +115,6 @@
 
                     <br />
                 </fieldset>
-                @*<h3>Contacts</h3>
-
-                    <fieldset>
-                        @*<div class="form-group">
-                            <label for="textBox" class="col-lg-2 control-label md-10">Author</label>
-                            <div class="col-lg-10">
-                                @Html.TextBoxFor(h => h.AuthorName, new { @class = "form-control" })
-                            </div>
-                        </div>
-                        <br />
-
-                        <div class="form-group">
-                            <label for="inputEmail" class="col-lg-2 control-label md-10">Email Address</label>
-                            <div class="col-lg-10 md-10">
-                                @Html.TextBoxFor(h => h.EmailAddress, new { @class = "form-control" })
-                            </div>
-                        </div>
-                        <br />
-
-                        <div class="form-group">
-                            <label for="textBox" class="col-lg-2 control-label md-10">Phone Number</label>
-                            <div class="col-lg-10 md-10">
-                                @Html.TextBoxFor(h => h.PhoneNumber, new { @class = "form-control" })
-                            </div>
-                        </div>
-                    </fieldset>*@
             </div>
             <br />
 

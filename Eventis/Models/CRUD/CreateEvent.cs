@@ -18,7 +18,7 @@ namespace Eventis.Models.CRUD
         
         public string ImagePath { get; set; }
         
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+
         public DateTime StartDate { get; set; }
         
         public string CategoryName { get; set; }

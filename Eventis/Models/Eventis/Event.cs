@@ -51,8 +51,10 @@ namespace Eventis.Models.Eventis
 
 
         public virtual ICollection<Contact> Contact { get; set; }
+        public int Genre_Id { get; set; }
 
-        public Genre Genre { get; set; }
+        [ForeignKey("Genre_Id")]
+        public virtual Genre Genre { get; set; }
 
         public int HallId { get; set; }
 
