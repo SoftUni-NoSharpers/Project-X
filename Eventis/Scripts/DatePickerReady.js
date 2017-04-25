@@ -20,10 +20,9 @@ $(function () {
 });
 
 $(document).ready(function () {
-    $('input[type=datetime2(7)]').datepicker({
+    $('input[type=datetime]').datepicker({
         dateFormat: "dd/MM/yyyy",
         changeMonth: true,
-        changeYear: true,
-        yearRange: "-60:+0"
+        changeYear: true
     });
 });

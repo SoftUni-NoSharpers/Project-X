@@ -6,6 +6,8 @@ using Eventis.Models.Identity;
 using Eventis.Models.Eventis;
 using Microsoft.AspNet.Identity;
 using Eventis.Models.CRUD;
+using System;
+using System.Globalization;
 
 namespace Eventis.Controllers
 {
@@ -87,7 +89,9 @@ namespace Eventis.Controllers
                 var hall = string.Format("{0}", Request.Form["myhall"]);
                 var hallId = db.Halls.Where(h => h.Name == hall).FirstOrDefault().Id;
 
-                var date = string.Format("{0}", Request.Form["mydate"]);
+                var stringDate = string.Format("{0}", Request.Form["mydate"]);
+
+                var date = DateTime.ParseExact(stringDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
                 //var currCat = this.Request.Form["mycat"];
                 var ev = new Event
@@ -107,18 +111,11 @@ namespace Eventis.Controllers
                     //},
                     ImagePath = model.ImagePath,
                     Status = model.Status,
-                    StartDate = model.StartDate,
+                    StartDate = date,
                     AuthorId = authorId,
                     HallId = hallId
                 };
-
-                //var hallinfo = new Hall
-                //{
-                //    Adress = model.Adress,
-                //    Name = model.HallName,
-                //    CityId = cityId
-                //};
-
+                
                 var contInfo = new Contact
                 {
                     Name = authorId,
