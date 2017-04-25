@@ -14,11 +14,6 @@ namespace Eventis.Controllers
         [HttpPost]
         public ActionResult Create(CommentViewModel model)
         {
-            //if (model.EventId == null)
-            //{
-            //    return RedirectToAction("Index", "Home");
-            //}
-
             var loggedInUserId = this.User.Identity.GetUserId();
 
             var comment = new Comment()
