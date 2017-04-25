@@ -53,7 +53,7 @@
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
-                @foreach (var c in Model.Comments)
+                @foreach (var c in Model.Comments.OrderByDescending(x=>x.Id))
                 {
                     <fieldset>
                         <legend>Comment:</legend>
