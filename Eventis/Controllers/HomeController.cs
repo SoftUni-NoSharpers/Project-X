@@ -45,7 +45,7 @@ namespace Eventis.Controllers
                 .Include(x => x.Category)
                 .Include(x => x.Genre)
                 .ToList();
-
+            ViewBag.Title = "All events";
             ViewBag.CurrentPage = page;
 
             return View(events);
