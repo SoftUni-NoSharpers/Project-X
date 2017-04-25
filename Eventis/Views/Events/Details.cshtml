@@ -21,8 +21,9 @@
 </div>
 <div class="row mt-30">
     <div class="col-md-12 text-center">
-        <p class="lead text-info">@Model.Content</p>
-        <p class="lead">Event genre : <span class="text-info lead">@Model.Genre.Name</span></p>
+        <p class="lead">Description : <span class=" text-info lead">@Model.Content</span></p>
+        <p class="lead">Event category : <a class="btn btn-info" href="/Home/Genres/@Model.CategoryId">@Model.Genre.Name</a></p>
+
     </div>
 </div>
 <div class="row">
@@ -39,4 +40,33 @@
     </div>
 </div>
 
+@*Comment section below*@
 
+<div class="row mt-30 text-center">
+    <a class="btn btn-primary btn-lg text-center col-md-12" onclick="myFunction2()">Collapse the Comments</a>
+    <script>
+        function myFunction2() {
+            $("#collapseComment").animate({ width: 'toggle' }, 350);
+        }
+    </script>
+    <div id="collapseComment">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                @foreach (var c in Model.Comments)
+                {
+                    <fieldset>
+                        <legend>Comment:</legend>
+                        <div class="col-md-12 text-left">
+                            <p class="lead">Author : <span class=" text-info lead">@c.Author.UserName</span></p>
+                            <p class="lead">Comment : <span class=" text-info lead">@c.Content</span></p>
+                        </div>
+                    </fieldset>
+                }
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        @using Eventis.Models.Eventis.ViewModels
+        @Html.Partial("_CommentPartial", new CommentViewModel() { EventId = Model.Id })
+    </div>
+</div>

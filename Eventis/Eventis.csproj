@@ -195,6 +195,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -207,6 +208,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CRUD\CreateEvent.cs" />
+    <Compile Include="Models\Eventis\ViewModels\CommentViewModel.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
     <Compile Include="Models\Eventis\Category.cs" />
     <Compile Include="Models\Eventis\City.cs" />
@@ -289,6 +291,7 @@
     <Content Include="Views\Home\Halls.cshtml" />
     <Content Include="Views\Home\Genres.cshtml" />
     <Content Include="Views\Events\CreateEvent.cshtml" />
+    <Content Include="Views\Shared\_CommentPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

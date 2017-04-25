@@ -15,9 +15,13 @@ namespace Eventis.Models.Eventis
         public string Content { get; set; }
 
         [Required]
-        public Event Event { get; set; }
+        public int EventId { get; set; }
+        
+        public virtual Event Event { get; set; }
 
         [Required]
-        public ApplicationUser Author { get; set; }
+        public string AuthorId { get; set; }
+        
+        public virtual ApplicationUser Author { get; set; }
     }
 }

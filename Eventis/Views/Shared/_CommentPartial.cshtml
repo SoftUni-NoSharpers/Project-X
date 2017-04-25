@@ -1,0 +1,35 @@
+﻿@model Eventis.Models.Eventis.ViewModels.CommentViewModel
+
+@using (Html.BeginForm("Create", "Comment", null, FormMethod.Post, null ))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary("", new { @class = "text - danger" });
+
+    if (User.Identity.IsAuthenticated)
+    {
+        <div>
+                @Html.HiddenFor(c => c.AuthorId)
+                @Html.HiddenFor(c => c.EventId)
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4">
+                    @Html.TextAreaFor(c => c.Content, new { rows = 7, @class = "input-lg form-control text-center" })
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            <input type="submit" class="btn btn-success">
+        </div>
+    }
+    else
+    {
+        <p class="lead">
+            If you want to add comments please click
+            <span>
+            @Html.ActionLink("here", "Register", "Home", null, new { @class = "btn btn-info btn-lg" })
+            </span>to register yourself now
+        </p>
+    }
+}
