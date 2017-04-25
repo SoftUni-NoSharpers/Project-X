@@ -5,6 +5,9 @@ using System.Web.Mvc;
 using Eventis.Models.Identity;
 using Eventis.Models.Eventis;
 using Microsoft.AspNet.Identity;
+using Eventis.Models.CRUD;
+using System;
+using System.Globalization;
 
 namespace Eventis.Controllers
 {
@@ -43,8 +46,21 @@ namespace Eventis.Controllers
 
         // GET: Events/Create
         [Authorize]
-        public ActionResult Create()
+        public ActionResult CreateEvent()
         {
+            var db = new ApplicationDbContext();
+            var categories = db.Categories.ToList();
+            //var catecory = string.Format("{0}", Request.Form["mycat"]);
+            //var catId = db.Categories.Where(e => e.Name == catecory).FirstOrDefault().Id;
+            var genres = db.Genres.ToList();
+            var cities = db.Cities.ToList();
+            var halls = db.Halls.ToList();
+            
+            ViewBag.Categories = categories;
+            ViewBag.Genres = genres;
+            ViewBag.Cities = cities;
+            ViewBag.Halls = halls;
+
             return View();
         }
 
@@ -54,17 +70,66 @@ namespace Eventis.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Content,ImagePath,ViewCount,StartDate,Comments,CategoryId,AuthorId,Status,Contact,Genre,HallId")] Event events)
+        public ActionResult CreateEvent(CreateEvent model)
         {
             if (ModelState.IsValid)
             {
-                events.AuthorId = User.Identity.GetUserId();
+                var db = new ApplicationDbContext();
 
-                db.Events.Add(events);
+                var authorId = this.User.Identity.GetUserId();
+                var catecory = string.Format("{0}", Request.Form["mycat"]);
+                var catId = db.Categories.Where(e => e.Name == catecory).FirstOrDefault().Id;
+                //var TextBoxValue =;/*string.Format("{0}", Request.Form["myhall"]);*/
+                var gener = string.Format("{0}", Request.Form["mygen"]);
+                var generId = db.Genres.Where(g => g.Name == gener).FirstOrDefault().Id;
+                //var stat = string.Format("{0}", Request.Form["mystat"]);
+                var city = string.Format("{0}", Request.Form["mycity"]);
+                var cityId = db.Cities.Where(c => c.Name == city).FirstOrDefault().Id;
+
+                var hall = string.Format("{0}", Request.Form["myhall"]);
+                var hallId = db.Halls.Where(h => h.Name == hall).FirstOrDefault().Id;
+
+                var stringDate = string.Format("{0}", Request.Form["mydate"]);
+
+                var date = DateTime.ParseExact(stringDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                //var currCat = this.Request.Form["mycat"];
+                var ev = new Event
+                {
+                    Title = model.Title,
+                    Content = model.Content,
+                    CategoryId = catId,
+                    //Category = new Category
+                    //{
+                    //    Id = catId,
+                    //    Name = catecory
+                    //},
+                    //Genre = new Genre {
+                    //    Id = generId,
+                    //    Name = gener,
+                    //    CategoryId = catId
+                    //},
+                    ImagePath = model.ImagePath,
+                    Status = model.Status,
+                    StartDate = date,
+                    AuthorId = authorId,
+                    HallId = hallId
+                };
+                
+                var contInfo = new Contact
+                {
+                    Name = authorId,
+                    EmailAddress = this.User.Identity.Name
+                };
+
+
+                db.Events.Add(ev);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                db.Contacts.Add(contInfo);
+                db.SaveChanges();
+                return RedirectToAction("../Home/Index");
             }
-            return View(events);
+            return View(model);
         }
 
         // GET: Events/Edit/5

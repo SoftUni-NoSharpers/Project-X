@@ -30,15 +30,16 @@ namespace Eventis.Models.Eventis
         public int ViewCount { get; set; }
 
         [Required]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime StartDate { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
 
         public int CategoryId { get; set; }
 
-        [Required]
+
         [ForeignKey("CategoryId")]
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
 
         public string AuthorId { get; set; }
 
@@ -48,15 +49,15 @@ namespace Eventis.Models.Eventis
         [Required]
         public Status Status { get; set; }
 
-        [Required]
+
         public virtual ICollection<Contact> Contact { get; set; }
 
         public Genre Genre { get; set; }
 
         public int HallId { get; set; }
 
-        [Required]
+
         [ForeignKey("HallId")]
-        public Hall Hall { get; set; }
+        public virtual Hall Hall { get; set; }
     }
 }

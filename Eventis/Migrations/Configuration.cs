@@ -13,6 +13,7 @@ namespace Eventis.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "Eventis.Models.IdentityConfig+ApplicationDbContext";
         }
 

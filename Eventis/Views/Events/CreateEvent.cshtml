@@ -1,0 +1,160 @@
+﻿@model Eventis.Models.CRUD.CreateEvent
+
+@{
+    ViewBag.Title = "Create";
+}
+@using (Html.BeginForm("CreateEvent", "Events", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <form class="form-control">
+        <fieldset>
+            <legend>Create Event</legend>
+            <br />
+            <div id="accordion">
+                <h2>Event Information</h2>
+                <fieldset>
+                    <div class="form-group">
+                        <label for="textBox" class="col-lg-2 control-label md-10">Title</label>
+                        <div class="col-lg-10">
+                            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="form-group">
+                        <label for="textArea" class="col-lg-2 control-label md-10">Content</label>
+                        <div class="col-lg-10 md-10">
+                            @Html.TextAreaFor(m => m.Content, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br />
+
+
+                    <div class="form-group">
+                        <label for="select" class="col-lg-2 control-label md-10">Category</label>
+
+                        <div class="col-lg-10 md-10">
+                            <select class="form-control" id="select myDropdown " name="mycat" runat="server">
+                                @foreach (var cat in ViewBag.Categories)
+                                {
+                                    <option>@cat.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="form-group">
+                        <label for="select" class="col-lg-2 control-label md-10">Genre</label>
+
+                        <div class="col-lg-10 md-10">
+                            <select class="form-control" id="select myGanreDropDown div1" name="mygen" runat="server">
+                                @foreach (var gener in ViewBag.Genres)
+                                {
+                                    
+                                    <option>@gener.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="form-group">
+                        <label for="textBox" class="col-lg-2 control-label md-10">ImagePath</label>
+                        <div class="col-lg-10 md-10">
+                            @Html.TextBoxFor(m => m.ImagePath, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="form-group">
+                        <label for="select" class="col-lg-2 control-label md-10">Status</label>
+                        <div class="col-lg-10 md-10">
+                            @*<select class="form-control" id="select" name="mystat" runat="server">*@
+                            @Html.EnumDropDownListFor(m => m.Status, new { @class = "form-control", @name = "mystat" })
+                            @*<option>Upcoming</option>
+                                    <option>Open</option>
+                                    <option>Closed</option>
+
+                                </select>*@
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="form-group">
+                        <label for="textBox" class="col-lg-2 control-label md-10">Start Date</label>
+                        <div class="col-lg-10 md-10">
+                            <input class="form-control" type="text" id="datepicker" name="mydate">
+                        </div>
+                    </div>
+                    <br />
+                </fieldset>
+                <h2>Place</h2>
+                <fieldset>
+                    <div class="form-group">
+                        <label for="textBox" class="col-lg-2 control-label md-10">City</label>
+                        <div class="col-lg-10">
+                            <select class="form-control" id="select" name="mycity" runat="Server">
+                                @foreach (var city in ViewBag.Cities)
+                                {
+                                    <option>@city.Name</option>
+                                }
+                            </select>
+
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="form-group">
+                        <label for="textBox" class="col-lg-2 control-label md-10">Hall Name</label>
+                        <div class="col-lg-10 md-10">
+                            <select class="form-control" id="select" name="myhall" runat="Server">
+                                @foreach (var hall in ViewBag.Halls)
+                                {
+                                    <option>@hall.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <br />
+
+                    <br />
+                </fieldset>
+                @*<h3>Contacts</h3>
+
+                    <fieldset>
+                        @*<div class="form-group">
+                            <label for="textBox" class="col-lg-2 control-label md-10">Author</label>
+                            <div class="col-lg-10">
+                                @Html.TextBoxFor(h => h.AuthorName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-lg-2 control-label md-10">Email Address</label>
+                            <div class="col-lg-10 md-10">
+                                @Html.TextBoxFor(h => h.EmailAddress, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="form-group">
+                            <label for="textBox" class="col-lg-2 control-label md-10">Phone Number</label>
+                            <div class="col-lg-10 md-10">
+                                @Html.TextBoxFor(h => h.PhoneNumber, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </fieldset>*@
+            </div>
+            <br />
+
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button type="reset" href="/" class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Next</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+}
