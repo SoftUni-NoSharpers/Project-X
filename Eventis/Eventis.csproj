@@ -231,7 +231,6 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\datepicker.css" />
-    <Content Include="Content\themes\base\jquery-ui.min.css" />
     <Content Include="EventisLogo\eventisweb.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -290,6 +289,7 @@
     <Content Include="Views\Home\Cities.cshtml" />
     <Content Include="Views\Home\Categories.cshtml" />
     <Content Include="Views\Events\Details.cshtml" />
+    <Content Include="Views\Home\ListAll.cshtml" />
     <Content Include="Views\Home\ListAll.cshtml" />
     <Content Include="Views\Home\Halls.cshtml" />
     <Content Include="Views\Home\Genres.cshtml" />
