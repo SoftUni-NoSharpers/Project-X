@@ -36,11 +36,11 @@ namespace Eventis.Models.Eventis
 
         public virtual ICollection<Comment> Comments { get; set; }
 
-        public int CategoryId { get; set; }
+        //public int CategoryId { get; set; }
 
 
-        [ForeignKey("CategoryId")]
-        public virtual Category Category { get; set; }
+        //[ForeignKey("CategoryId")]
+        //public virtual Category Category { get; set; }
 
         public string AuthorId { get; set; }
 
@@ -52,11 +52,11 @@ namespace Eventis.Models.Eventis
 
 
         public virtual ICollection<Contact> Contact { get; set; }
-        public int Genre_Id { get; set; }
+        public int GenreId { get; set; }
 
-        [ForeignKey("Genre_Id")]
+        [ForeignKey("GenreId")]    
         public virtual Genre Genre { get; set; }
-
+        
         public int HallId { get; set; }
 
 

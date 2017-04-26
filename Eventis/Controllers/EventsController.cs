@@ -30,7 +30,7 @@ namespace Eventis.Controllers
                 .Where(c => c.Id == id)
                 .Include(x => x.Contact)
                 .Include(x => x.Author)
-                .Include(x => x.Category)
+                .Include(x => x.Genre.Category)
                 .Include(x => x.Genre)
                 .FirstOrDefault();
 
@@ -94,8 +94,8 @@ namespace Eventis.Controllers
                 {
                     Title = model.Title,
                     Content = model.Content,
-                    CategoryId = catId,
-                    Genre_Id = generId,
+                    //CategoryId = catId,
+                    GenreId = generId,
                     ImagePath = model.ImagePath,
                     Status = model.Status,
                     StartDate = date,
@@ -139,7 +139,7 @@ namespace Eventis.Controllers
             var gener = string.Format("{0}", Request.Form["mygen"]);
             var hall = string.Format("{0}", Request.Form["myhall"]);
 
-            ev.CategoryName = events.Category.Name;
+            ev.CategoryName = events.Genre.Category.Name;
             ev.CityName = db.Cities.Where(c => c.Id == events.Hall.CityId).FirstOrDefault().Name;
             ev.Content = events.Content;
             ev.GenreName = db.Genres.Where(g => g.Name == events.Genre.Name).FirstOrDefault().Name;
@@ -176,9 +176,9 @@ namespace Eventis.Controllers
             var hall = string.Format("{0}", Request.Form["myhall"]);
 
             events.AuthorId = db.Events.Select(i => i.AuthorId).First();
-            events.CategoryId = db.Categories.Where(c => c.Name == cat).First().Id;
+            //events.CategoryId = db.Categories.Where(c => c.Name == cat).First().Id;
             events.HallId = db.Halls.Where(h => h.Name == hall).First().Id;
-            events.Genre_Id = db.Genres.Where(g => g.Name == gener).First().Id;
+            events.GenreId = db.Genres.Where(g => g.Name == gener).First().Id;
             //events.Hall.CityId = db.Cities.Where(c => c.Name == city).First().Id;
             if (ModelState.IsValid)
             {
@@ -215,7 +215,7 @@ namespace Eventis.Controllers
             var gener = string.Format("{0}", Request.Form["mygen"]);
             var hall = string.Format("{0}", Request.Form["myhall"]);
 
-            ev.Category = events.Category.Name;
+            ev.Category = events.Genre.Category.Name;
             ev.City = db.Cities.Where(c => c.Id == events.Hall.CityId).FirstOrDefault().Name;
             ev.Content = events.Content;
             ev.Genre = db.Genres.Where(g => g.Name == events.Genre.Name).FirstOrDefault().Name;
