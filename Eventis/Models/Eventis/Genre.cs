@@ -17,6 +17,7 @@ namespace Eventis.Models.Eventis
         [Required]
         public int CategoryId { get; set; }
 
+        public virtual Category Category { get; set; } 
         public ICollection<Event> Events { get; set; }
     }
 }

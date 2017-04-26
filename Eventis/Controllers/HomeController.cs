@@ -16,7 +16,7 @@ namespace Eventis.Controllers
                 .Take(6)
                 .Include(x => x.Contact)
                 .Include(x => x.Author)
-                .Include(x => x.Category)
+                .Include(x => x.Genre.Category)
                 .Include(x => x.Genre)
                 .ToList();
 
@@ -43,7 +43,7 @@ namespace Eventis.Controllers
                 .Take(pageSize)
                 .Include(x => x.Contact)
                 .Include(x => x.Author)
-                .Include(x => x.Category)
+                .Include(x => x.Genre.Category)
                 .Include(x => x.Genre)
                 .ToList();
             ViewBag.Title = "All events";
@@ -79,7 +79,7 @@ namespace Eventis.Controllers
            
             var hall = db.Events
                 .Where(e => e.HallId == id)
-                .Include(c => c.Category)
+                .Include(c => c.Genre.Category)
                 .Include(g => g.Genre)
                 .Include(g => g.Hall)
                 .ToList();
@@ -93,7 +93,7 @@ namespace Eventis.Controllers
             var db = new ApplicationDbContext();
             var events = db.Events
                 .Where(g => g.Genre.Id == id)
-                .Include(c => c.Category)
+                .Include(c => c.Genre.Category)
                 .Include(g => g.Genre)
                 .Include(g => g.Hall)
                 .ToList();
