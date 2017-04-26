@@ -8,8 +8,17 @@
     <img src="../EventisLogo/eventisweb.jpg" alt="EventisLogo">
     <h2 class="text-center" style="color:cadetblue">EVENTS BECOME FEELINGS,FEELINGS BECOME EVENTS</h2>
     <p class="text-center">
-        <a href="/Account/Register" class="btn btn-primary btn-lg">Register now!</a>
-    </p>
+        @{
+            bool val1 = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+            if (val1)
+            {
+                <a href="/Events/CreateEvent" class="btn btn-primary btn-lg">Add Event!</a>
+            }
+            else
+            {
+                <a href="/Account/Register" class="btn btn-primary btn-lg">Register now!</a>
+            }
+        }</p>
 </div>
 
 <hr />
