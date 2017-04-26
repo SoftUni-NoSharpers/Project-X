@@ -30,7 +30,8 @@ namespace Eventis.Models.Eventis
         public int ViewCount { get; set; }
 
         [Required]
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime StartDate { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }

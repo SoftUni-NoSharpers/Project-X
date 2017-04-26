@@ -1,0 +1,106 @@
+﻿@model Eventis.Models.CRUD.DeleteEvent
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+            <br />
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+            <br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePath)
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImagePath)
+            <br />
+            <img id="slide" src="@Model.ImagePath" class="img-responsive" style="width:100px ; width:100px" alt="">
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+            <br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+            <br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre)
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre)
+            <br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hall)
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hall)
+            <br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <h3>Are you sure you want to delete this?</h3>
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" href/> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -128,7 +128,34 @@ namespace Eventis.Controllers
             {
                 return HttpNotFound();
             }
-            return View(events);
+
+            CreateEvent ev = new CreateEvent();
+
+            var city = string.Format("{0}", Request.Form["mycity"]);
+            var gener = string.Format("{0}", Request.Form["mygen"]);
+            var hall = string.Format("{0}", Request.Form["myhall"]);
+
+            ev.CategoryName = events.Category.Name;
+            ev.CityName = db.Cities.Where(c => c.Id == events.Hall.CityId).FirstOrDefault().Name;
+            ev.Content = events.Content;
+            ev.GenreName = db.Genres.Where(g => g.Name == events.Genre.Name).FirstOrDefault().Name;
+            ev.HallName = db.Halls.Where(h => h.Name == events.Hall.Name).FirstOrDefault().Name; ;
+            ev.ImagePath = events.ImagePath;
+            ev.StartDate = events.StartDate;
+            ev.Status = events.Status;
+            ev.Title = events.Title;
+            
+            var categories = db.Categories.ToList();
+            var genres = db.Genres.ToList();
+            var cities = db.Cities.ToList();
+            var halls = db.Halls.ToList();
+
+            ViewBag.Categories = categories;
+            ViewBag.Genres = genres;
+            ViewBag.Cities = cities;
+            ViewBag.Halls = halls;
+
+            return View(ev);
         }
 
         // POST: Events/Edit/5
@@ -137,13 +164,23 @@ namespace Eventis.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Content,ImagePath,ViewCount,StartDate,Comments,CategoryId,AuthorId,Status,Contact,Genre,HallId")] Event events)
+        public ActionResult Edit(Event events)
         {
+            var cat = string.Format("{0}",Request.Form["mycat"]);
+            var city = string.Format("{0}", Request.Form["mycity"]);
+            var gener = string.Format("{0}", Request.Form["mygen"]);
+            var hall = string.Format("{0}", Request.Form["myhall"]);
+
+            events.AuthorId = db.Events.Select(i => i.AuthorId).First();
+            events.CategoryId = db.Categories.Where(c => c.Name == cat).First().Id;
+            events.HallId = db.Halls.Where(h => h.Name == hall).First().Id;
+            events.Genre_Id = db.Genres.Where(g => g.Name == gener).First().Id;
+            //events.Hall.CityId = db.Cities.Where(c => c.Name == city).First().Id;
             if (ModelState.IsValid)
             {
                 db.Entry(events).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Events", new { Id = events.Id });
             }
             return View(events);
         }
@@ -156,12 +193,36 @@ namespace Eventis.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event events = db.Events.Find(id);
+
+            Event events = db.Events
+                .Where(e => e.Id == id)
+                .Include(e => e.Author)
+                .Include(e => e.Comments)
+                .First();
+
             if (events == null)
             {
                 return HttpNotFound();
             }
-            return View(events);
+
+            DeleteEvent ev = new DeleteEvent();
+
+            var city = string.Format("{0}", Request.Form["mycity"]);
+            var gener = string.Format("{0}", Request.Form["mygen"]);
+            var hall = string.Format("{0}", Request.Form["myhall"]);
+
+            ev.Category = events.Category.Name;
+            ev.City = db.Cities.Where(c => c.Id == events.Hall.CityId).FirstOrDefault().Name;
+            ev.Content = events.Content;
+            ev.Genre = db.Genres.Where(g => g.Name == events.Genre.Name).FirstOrDefault().Name;
+            ev.Hall = db.Halls.Where(h => h.Name == events.Hall.Name).FirstOrDefault().Name; ;
+            ev.ImagePath = events.ImagePath;
+            ev.StartDate = events.StartDate;
+            ev.Status = events.Status;
+            ev.Title = events.Title;
+            ev.Comments = events.Comments;
+
+            return View(ev);
         }
 
         // POST: Events/Delete/5
@@ -173,7 +234,7 @@ namespace Eventis.Controllers
             Event events = db.Events.Find(id);
             db.Events.Remove(events);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("/../Home/ListAll");
         }
 
         protected override void Dispose(bool disposing)
