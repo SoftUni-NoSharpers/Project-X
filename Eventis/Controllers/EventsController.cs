@@ -39,6 +39,10 @@ namespace Eventis.Controllers
                 return HttpNotFound();
             }
 
+            events.ViewCount++;
+            db.Entry(events).State = EntityState.Modified;
+           
+            db.SaveChanges();
             var viewBagName = db.Events.Where(i => i.Id == id);
             ViewBag.Title = viewBagName.First().Title;
             return View(events);
