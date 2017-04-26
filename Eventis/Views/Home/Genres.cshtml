@@ -18,49 +18,62 @@
             {
                 <h2 class="text-center">There is no Events for this Genre!</h2>
             }
-            @foreach (var i in Model)
-            {
-                <div class="corners col-md-6">
-                    <h1 class="text-center">@i.Title</h1>
+            <div class="row mt-30">
+                @foreach (var i in Model)
+                {
+                    <div class="jumbotron col-md-5">
+                        @{
+                            if (i.Title.Length >= 10)
+                            {
+                                string res = i.Title.Substring(0, 9);
+                                <h1 class="text-center">@res...</h1>
+                            }
+                            else
+                            {
+                                <h1 class="text-center">@i.Title</h1>
+                            }
+                        }
 
-                    <p class="text-center">
-                        <a class="btn btn-default disabled text-center" href="/Home/Index">@i.Status</a>
-                    </p>
-
-                    <img src="@i.ImagePath" class="img-responsive" />
-
-                    <div class="row mt-30">
-                        <p class="col-md-6 lead">
-                            View count:
+                        <p class="text-center">
+                            <a class="btn btn-default disabled text-center" href="/Home/Index">@i.Status</a>
                         </p>
-                        <p class="col-md-6 text-right lead">
-                            @i.ViewCount
+
+                        <p class="text-right mt-30">
+                            <a class="btn btn-default" href="/Events/Details/@i.Id">
+                                <img src="@i.ImagePath" class="img-responsive" style="width:350px ; height:200px" />Take a look!
+                            </a>
                         </p>
+
+                        <div class="row mt-30">
+                            <p class="col-md-6 lead">
+                                View count:
+                            </p>
+                            <p class="col-md-6 text-right lead">
+                                @i.ViewCount
+                            </p>
+                        </div>
+                        <div class="row">
+                            <p class="col-md-6 lead">
+                                Start Date:
+                            </p>
+                            <p class="col-md-6 text-right lead">
+                                @i.StartDate.ToString("dd MMMM , yyyy")
+                            </p>
+                        </div>
+                        <div class="row">
+                            <p class="col-md-6 lead">
+                                Category:
+                            </p>
+                            <p class="col-md-6 text-right lead">
+                                @i.Category.Name
+                            </p>
+                        </div>
                     </div>
-                    <div class="row">
-                        <p class="col-md-6 lead">
-                            Start Date:
-                        </p>
-                        <p class="col-md-6 text-right lead">
-                            @i.StartDate
-                        </p>
-                    </div>
-                    <div class="row">
-                        <p class="col-md-6 lead">
-                            Category:
-                        </p>
-                        <p class="col-md-6 text-right lead">
-                            @i.Category.Name
-                        </p>
-                    </div>
-
-                    <p class="text-right mt-30">
-                        <a class="btn btn-info" href="/Events/Details/@i.Id">Take a look!</a>
-                    </p>
-                </div>
-            }
+                    <div class="col-md-1"></div>
+                            }
+            </div>
+            <hr />
         </div>
-
     </div>
 </body>
 </html>
