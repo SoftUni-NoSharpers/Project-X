@@ -13,28 +13,28 @@
         <h2 class="text-center">There is no Events for this Hall!</h2>
         }
         <div class="row mt-30">
-            @foreach (var i in Model)
+            @foreach (var iEvent in Model)
             {
                 <div class="jumbotron col-md-5">
                     @{
-                        if (i.Title.Length >= 10)
+                        if (iEvent.Title.Length >= 10)
                         {
-                            string res = i.Title.Substring(0, 9);
+                            string res = iEvent.Title.Substring(0, 9);
                             <h1 class="text-center">@res...</h1>
                         }
                         else
                         {
-                            <h1 class="text-center">@i.Title</h1>
+                            <h1 class="text-center">@iEvent.Title</h1>
                         }
                     }
 
                     <p class="text-center">
-                        <a class="btn btn-default disabled text-center" href="/Home/Index">@i.Status</a>
+                        <a class="btn btn-default disabled text-center" href="/Home/Index">@iEvent.Status</a>
                     </p>
 
                     <p class="text-right mt-30">
-                        <a class="btn btn-default" href="/Events/Details/@i.Id">
-                            <img src="@i.ImagePath" class="img-responsive" style="width:350px ; height:200px" />Take a look!
+                        <a class="btn btn-default" href="/Events/Details/@iEvent.Id">
+                            <img src="@iEvent.ImagePath" class="img-responsive" style="width:350px ; height:200px" />Take a look!
                         </a>
                     </p>
 
@@ -43,7 +43,7 @@
                             View count:
                         </p>
                         <p class="col-md-6 text-right lead">
-                            @i.ViewCount
+                            @iEvent.ViewCount
                         </p>
                     </div>
                     <div class="row">
@@ -51,7 +51,7 @@
                             Start Date:
                         </p>
                         <p class="col-md-6 text-right lead">
-                            @i.StartDate.ToString("dd MMMM , yyyy")
+                            @iEvent.StartDate.ToString("dd MMMM , yyyy")
                         </p>
                     </div>
                     <div class="row">
@@ -59,7 +59,7 @@
                             Category:
                         </p>
                         <p class="col-md-6 text-right lead">
-                            @i.Genre.Category.Name
+                            @iEvent.Genre.Category.Name
                         </p>
                     </div>
                 </div>

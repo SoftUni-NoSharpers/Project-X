@@ -167,33 +167,32 @@ namespace Eventis.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Event events)
-        {
-            
-
+        public ActionResult Edit(Event iEvent)
+        {            
             var cat = string.Format("{0}",Request.Form["mycat"]);
             var city = string.Format("{0}", Request.Form["mycity"]);
-            var gener = string.Format("{0}", Request.Form["mygen"]);
+            var genre = string.Format("{0}", Request.Form["mygen"]);
             var hall = string.Format("{0}", Request.Form["myhall"]);
             
             var stringDate = string.Format("{0}", Request.Form["mydate"]);
             var date = DateTime.ParseExact(stringDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
 
-            events.AuthorId = db.Events.Select(i => i.AuthorId).First();
-            events.HallId = db.Halls.Where(h => h.Name == hall).First().Id;
-            events.GenreId = db.Genres.Where(g => g.Name == gener).First().Id;
-            events.StartDate = date;
+            iEvent.AuthorId = db.Events.Where(eve => eve.Id == iEvent.Id).Select(eve => eve.AuthorId).First();
+           
+            iEvent.HallId = db.Halls.Where(h => h.Name == hall).First().Id;
+            iEvent.GenreId = db.Genres.Where(g => g.Name == genre).First().Id;
+            iEvent.StartDate = date;
             if (ModelState.IsValid)
             {
-                if (events == null || !IsAuthorized(events))
+                if (iEvent == null || !IsAuthorized(iEvent))
                 {
                     return HttpNotFound();
                 }
-                db.Entry(events).State = EntityState.Modified;
+                db.Entry(iEvent).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Details", "Events", new { Id = events.Id });
+                return RedirectToAction("Details", "Events", new { Id = iEvent.Id });
             }
-            return View(events);
+            return View(iEvent);
         }
 
         // GET: Events/Delete/5

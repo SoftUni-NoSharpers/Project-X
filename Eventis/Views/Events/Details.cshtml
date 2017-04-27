@@ -48,7 +48,7 @@
 <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-        <p class="lead">Event category : <a class="btn btn-info" href="/Home/Genres/@Model.GenreId">@Model.Genre.Name</a></p>
+        <p class="lead">Event genre: <a class="btn btn-info" href="/Home/Genres/@Model.GenreId">@Model.Genre.Name</a></p>
     </div>
     <div class="col-md-4"></div>
 </div>
@@ -67,6 +67,8 @@
         <p class="text-left lead">
             Contact :<span><a class="text-info" href="mailto:@Model.Author.UserName">@Model.Author.UserName</a></span> for more information about the event.
         </p>
+       @{ var comentCount = Model.Comments.Count.ToString(); }
+        
     </div>
     <div class="col-md-4"></div>
 </div>
@@ -88,7 +90,7 @@
     @Html.Partial("_CommentPartial", new CommentViewModel() { EventId = Model.Id })
 </div>
 <div class="row mt-30 text-center">
-    <a class="btn btn-primary btn-lg text-center col-md-12" onclick="myFunction2()">Collapse the Comments</a>
+    <a class="btn btn-primary btn-lg text-center col-md-12" onclick="myFunction2()">Hide/Show Comments - @comentCount</a>
     <script>
         function myFunction2() {
             $("#collapseComment").animate({ width: 'toggle' }, 350);
@@ -127,7 +129,8 @@
                                   }
                               </div>
                               <div class="col-md-8 r">
-                                  <span class="text-info lead">@c.Author.UserName</span>
+                                  <span class="text-info lead">@c.Author.UserName </span>
+                                  
                               </div>
                           </div>
                             <hr class="alert-danger" />
