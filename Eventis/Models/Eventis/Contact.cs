@@ -5,6 +5,10 @@ namespace Eventis.Models.Eventis
 {
     public class Contact
     {
+        public Contact()
+        {
+            Events = new HashSet<Event>();
+        }
         [Key]
         public int Id { get; set; }
 
@@ -12,6 +16,6 @@ namespace Eventis.Models.Eventis
         [EmailAddress]
         public string EmailAddress { get; set; }
 
-        public ICollection<Event> Events { get; set; }
+        public virtual ICollection<Event> Events { get; set; }
     }
 }

@@ -5,6 +5,10 @@ namespace Eventis.Models.Eventis
 {
     public class Hall
     {
+        public Hall()
+        {
+            Events = new HashSet<Event>();
+        }
         [Key]
         public int Id { get; set; }
 
@@ -17,7 +21,7 @@ namespace Eventis.Models.Eventis
         [Required]
         public string Adress { get; set; }
 
-        public ICollection<Event> Events { get; set; }
+        public virtual ICollection<Event> Events { get; set; }
 
     }
 }

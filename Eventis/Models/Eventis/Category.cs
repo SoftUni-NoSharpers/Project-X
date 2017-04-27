@@ -5,6 +5,10 @@ namespace Eventis.Models.Eventis
 {
     public class Category
     {
+        public Category()
+        {
+            Genres = new HashSet<Genre>();
+        }
         [Key]
         public int Id { get; set; }
 
@@ -14,6 +18,6 @@ namespace Eventis.Models.Eventis
             , MinimumLength = 5)]
         public string Name { get; set; }
 
-        public ICollection<Genre> Genres { get; set; }
+        public virtual ICollection<Genre> Genres { get; set; }
     }
 }

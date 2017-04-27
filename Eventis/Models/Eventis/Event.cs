@@ -3,13 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Web;
-using Microsoft.AspNet.Identity;
 
 namespace Eventis.Models.Eventis
 {
     public class Event
     {
+        public Event()
+        {
+            Comments = new HashSet<Comment>();
+
+            Contact = new HashSet<Contact>();
+        }
         private const int ContentMinimumLength = 5;
 
         [Key]
@@ -32,17 +36,9 @@ namespace Eventis.Models.Eventis
         public int ViewCount { get; set; }
 
         [Required]
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime StartDate { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
-
-        //public int CategoryId { get; set; }
-
-
-        //[ForeignKey("CategoryId")]
-        //public virtual Category Category { get; set; }
 
         public string AuthorId { get; set; }
 
@@ -67,7 +63,7 @@ namespace Eventis.Models.Eventis
 
         public bool IsAuthor(string authorId)
         {
-            return /*HttpContext.Current.User.Identity.GetUserId()*/this.AuthorId == authorId;
+            return this.AuthorId == authorId;
         }
     }
 }

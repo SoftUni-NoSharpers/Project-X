@@ -3,13 +3,15 @@ using Eventis.Models.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Eventis.Models.CRUD
 {
     public class DeleteEvent
     {
+        public DeleteEvent()
+        {
+            Comments = new HashSet<Comment>();
+        }
         [Key]
         public int Id { get; set; }
 
@@ -20,8 +22,6 @@ namespace Eventis.Models.CRUD
 
         public string ImagePath { get; set; }
 
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
 
         public DateTime StartDate { get; set; }
 
@@ -32,13 +32,11 @@ namespace Eventis.Models.CRUD
 
         public string Genre { get; set; }
 
-        //Place Form
-
         public string Hall { get; set; }
 
         public string City { get; set; }
 
-        public ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
 
         public ApplicationUser Author { get; set; }
     }

@@ -21,8 +21,7 @@ namespace Eventis.Models.CRUD
         public string ImagePath { get; set; }
 
         [DisplayName("Start Date")]
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+       
         public DateTime StartDate { get; set; }
         [DisplayName("Category")]
         public string CategoryName { get; set; }
@@ -32,7 +31,6 @@ namespace Eventis.Models.CRUD
         [DisplayName("Genre")]
         public string GenreName { get; set; }
 
-        //Place Form
         [DisplayName("Hall")]
         public string HallName { get; set; }
         [DisplayName("City")]
