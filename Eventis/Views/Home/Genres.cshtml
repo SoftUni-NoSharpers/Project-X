@@ -67,12 +67,23 @@
                             <p class="col-md-6 text-right lead">
                                 @i.Genre.Category.Name
                             </p>
+                           
+                        
                         </div>
                     </div>
                     <div class="col-md-1"></div>
                             }
             </div>
             <hr />
+        </div>
+        @{ 
+            var currentUserQuery = Request.QueryString["Id"];
+        }
+        <div class="row">
+            <p class="text-center mt-30 ">
+                <a href="/Home/Genres/@(Url.RequestContext.RouteData.Values["id"])?page=@(ViewBag.CurrentPage - 1)@(currentUserQuery != null ? "&user=" +currentUserQuery : string.Empty)" class="btn btn-primary @(ViewBag.CurrentPage == 1 ? "disabled" : string.Empty)">Previous page</a>
+                <a href="/Home/Genres/@(Url.RequestContext.RouteData.Values["id"])?page=@(ViewBag.CurrentPage + 1)@(currentUserQuery != null ? "&user=" +currentUserQuery : string.Empty)" class="btn btn-primary @(!Model.Any() || Model.Count < 6 ? "disabled" : string.Empty)">Next page</a>
+            </p>
         </div>
     </div>
 </body>
