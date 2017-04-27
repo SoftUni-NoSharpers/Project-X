@@ -79,8 +79,8 @@ namespace Eventis.Controllers
                 var db = new ApplicationDbContext();
 
                 var authorId = this.User.Identity.GetUserId();
-                var catecory = string.Format("{0}", Request.Form["mycat"]);
-                var catId = db.Categories.Where(e => e.Name == catecory).FirstOrDefault().Id;
+                //var catecory = string.Format("{0}", Request.Form["mycat"]);
+                //var catId = db.Categories.Where(e => e.Name == catecory).FirstOrDefault().Id;
                 var gener = string.Format("{0}", Request.Form["mygen"]);
                 var generId = db.Genres.Where(g => g.Name == gener).FirstOrDefault().Id;
                 var city = string.Format("{0}", Request.Form["mycity"]);
