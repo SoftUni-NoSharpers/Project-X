@@ -87,6 +87,7 @@ namespace Eventis.Controllers
                 var cityId = db.Cities.Where(c => c.Name == city).FirstOrDefault().Id;
                 var hall = string.Format("{0}", Request.Form["myhall"]);
                 var hallId = db.Halls.Where(h => h.Name == hall).FirstOrDefault().Id;
+
                 var stringDate = string.Format("{0}", Request.Form["mydate"]);
                 var date = DateTime.ParseExact(stringDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
                 
@@ -148,6 +149,7 @@ namespace Eventis.Controllers
             ev.StartDate = events.StartDate;
             ev.Status = events.Status;
             ev.Title = events.Title;
+        
             
             var categories = db.Categories.ToList();
             var genres = db.Genres.ToList();
@@ -174,12 +176,14 @@ namespace Eventis.Controllers
             var city = string.Format("{0}", Request.Form["mycity"]);
             var gener = string.Format("{0}", Request.Form["mygen"]);
             var hall = string.Format("{0}", Request.Form["myhall"]);
+            
+            var stringDate = string.Format("{0}", Request.Form["mydate"]);
+            var date = DateTime.ParseExact(stringDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
 
             events.AuthorId = db.Events.Select(i => i.AuthorId).First();
-            //events.CategoryId = db.Categories.Where(c => c.Name == cat).First().Id;
             events.HallId = db.Halls.Where(h => h.Name == hall).First().Id;
             events.GenreId = db.Genres.Where(g => g.Name == gener).First().Id;
-            //events.Hall.CityId = db.Cities.Where(c => c.Name == city).First().Id;
+            events.StartDate = date;
             if (ModelState.IsValid)
             {
                 db.Entry(events).State = EntityState.Modified;

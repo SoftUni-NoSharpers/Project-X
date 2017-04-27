@@ -19,7 +19,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", required = "required", pattern = ".{5,20}", Title = "Title cannot be less than 5 characters and more than 20" } })
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -27,7 +27,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control", required = "required", Pattern = ".{10,100}", Title = "Title cannot be less than 10 characters and more than 100" } })
                 @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -40,55 +40,52 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" , required = "required" } })
                 @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
             </div>
-        </div>
-
+        </div>*@
         <div class="form-group">
-            @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @*@Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })*@
-                <select class="form-control" id="select myDropdown " name="mycat" runat="server" selected="">
-                    @foreach (var cat in ViewBag.Categories)
-                    {
-                        <option>@cat.Name</option>
-                    }
-                </select>
-
-                @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
+            <label for="textBox" class="col-lg-2 control-label md-10">Start Date</label>
+            <div class="col-lg-10 md-10">
+                <input required="required" class="form-control datepicker" type="text" id="datepicker" name="mydate">
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.GenreName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @*@Html.EditorFor(model => model.GenreName, new { htmlAttributes = new { @class = "form-control" } })*@
-                <select class="form-control" id="select myDropdown " name="mygen" runat="server" selected="">
-                    @foreach (var gen in ViewBag.Genres)
-                    {
-                        <option>@gen.Name</option>
-                    }
+            <label for="select" class="col-lg-2 control-label md-10">Category/Genre</label>
+            <div class="col-lg-10 md-10">
+                <select class="form-control" id="select myGanreDropDown div1" name="mygen" runat="server">
+                    <optgroup label="Music">
+                        <option>Pop Folk</option>
+                        <option>Rock</option>
+                        <option>Techno</option>
+                    </optgroup>
+                    <optgroup label="Movie">
+                        <option>Comedy</option>
+                        <option>Horror</option>
+                        <option>Action</option>
+                    </optgroup>
+                    <optgroup label="Science">
+                        <option>Chemistry</option>
+                        <option>Math</option>
+                        <option>Physic</option>
+                    </optgroup>
                 </select>
-
-                @Html.ValidationMessageFor(model => model.GenreName, "", new { @class = "text-danger" })
             </div>
         </div>
-
+       
         <div class="form-group">
             @Html.LabelFor(model => model.CityName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @*@Html.EditorFor(model => model.CityName, new { htmlAttributes = new { @class = "form-control" } })*@
                 <select class="form-control" id="select myDropdown " name="mycity" runat="server" selected="">
                     @foreach (var city in ViewBag.Cities)
                     {
                         <option>@city.Name</option>
                     }
                 </select>
-
                 @Html.ValidationMessageFor(model => model.CityName, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -96,7 +93,6 @@
         <div class="form-group">
             @Html.LabelFor(model => model.HallName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @*@Html.EditorFor(model => model.HallName, new { htmlAttributes = new { @class = "form-control" } })*@
                 <select class="form-control" id="select myDropdown " name="myhall" runat="server" selected="">
                     @foreach (var hall in ViewBag.Halls)
                     {

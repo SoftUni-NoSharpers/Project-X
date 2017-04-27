@@ -11,7 +11,7 @@ namespace Eventis.Models.Eventis
         [Required]
         [StringLength(200
             , ErrorMessage = "Comment cannot be longer than 200 symbols"
-            , MinimumLength = 3)]
+            , MinimumLength = 1)]
         public string Content { get; set; }
 
         [Required]

@@ -40,7 +40,7 @@
 <div class="row mt-30">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-        <p class="lead">Description : <span class=" text-info lead">@Model.Content</span></p>
+        <p class="lead">Description : <span class="text-info lead" style="overflow-wrap:break-word">@Model.Content</span></p>
     </div>
     <div class="col-md-4"></div>
 </div>
@@ -83,6 +83,23 @@
             $("#collapseComment").animate({ width: 'toggle' }, 350);
         }
     </script>
+    <div>
+        @{
+            var images = new List<string>()
+    {
+        "http://icons.iconarchive.com/icons/martin-berube/flat-animal/128/sheep-icon.png",
+        "http://icons.iconarchive.com/icons/martin-berube/flat-animal/128/pig-icon.png",
+        "http://icons.iconarchive.com/icons/martin-berube/square-animal/256/Eagle-icon.png",
+        "http://icons.iconarchive.com/icons/martin-berube/flat-animal/256/squirrel-icon.png",
+        "http://icons.iconarchive.com/icons/martin-berube/flat-animal/256/dog-icon.png",
+        "http://icons.iconarchive.com/icons/martin-berube/animal/256/owl-icon.png",
+        "http://icons.iconarchive.com/icons/martin-berube/flat-animal/256/duck-icon.png",
+        "http://icons.iconarchive.com/icons/martin-berube/flat-animal/256/cat-icon.png"
+    };
+            Random ran = new Random();
+        }
+    </div>
+
     <div id="collapseComment">
         <div class="row">
             <div class="col-md-4"></div>
@@ -91,11 +108,22 @@
                 {
                     <div class="jumbotron container mt-30" style="background-color:#e0f7ff">
                         <div class="col-md-12 text-left">
-                            <p class="lead">Author : <span class="text-info lead">@c.Author.UserName</span></p>
-                            <p class="lead" style="width:200px ; overflow-wrap:break-word">Comment : <span class="text-info lead">@c.Content</span></p>
+                          <div class="row">
+                              <div class="col-md-4 pull-left ">
+                                  @{
+                                      var randomNum = ran.Next(0, 8);
+                                      <img src="@images[randomNum]" alt="Smiley face" height="45" width="45" class="img-circle img-responsive">
+                                  }
+                              </div>
+                              <div class="col-md-8 r">
+                                  <span class="text-info lead">@c.Author.UserName</span>
+                              </div>
+                          </div>
+                            <hr class="alert-danger" />
+                            <p class="lead" style="width:200px ; overflow-wrap:break-word"><span class="text-info lead">@c.Content</span></p>
                         </div>
                     </div>
-                }
+                 }
             </div>
             <div class="col-md-4"></div>
         </div>

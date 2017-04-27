@@ -24,13 +24,12 @@
                     <div class="form-group">
                         <label for="textArea" class="col-lg-2 control-label md-10">Content</label>
                         <div class="col-lg-10 md-10">
-                            @Html.TextBoxFor(m => m.Content, new { @class = "form-control", required = "required", Pattern = ".{10,70}", Title = "Title cannot be less than 10 characters and more than 70" })
+                            @Html.TextBoxFor(m => m.Content, new { @class = "form-control", required = "required", Pattern = ".{10,100}", Title = "Title cannot be less than 10 characters and more than 100" })
                         </div>
                     </div>
                     <br />
                     <div class="form-group">
                         <label for="select" class="col-lg-2 control-label md-10">Category/Genre</label>
-
                         <div class="col-lg-10 md-10">
                             <select class="form-control" id="select myGanreDropDown div1" name="mygen" runat="server">
                                     <optgroup label="Music">
@@ -70,7 +69,6 @@
 
                     <div class="form-group">
                         <label for="textBox" class="col-lg-2 control-label md-10">Start Date</label>
-
                         <div class="col-lg-10 md-10">
                                 <input required = "required" class="form-control datepicker" type="text" id="datepicker" name="mydate">
                             </div>

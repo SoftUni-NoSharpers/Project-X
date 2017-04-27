@@ -16,7 +16,7 @@
             
             <div class="col-md-4"></div>
             <div class="col-md-4">
-                @Html.TextAreaFor(c => c.Content, new { rows = 7, @class = "input-lg form-control text-center" })
+                @Html.TextAreaFor(c => c.Content, new { rows = 7, @class = "input-lg form-control text-center" , required = "required" , pattern = ".{5,20}" })
             </div>
             <div class="col-md-4"></div>
         </div>

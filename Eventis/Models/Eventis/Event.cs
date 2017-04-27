@@ -21,7 +21,7 @@ namespace Eventis.Models.Eventis
 
         [Required]
         [StringLength(100
-            , MinimumLength = ContentMinimumLength
+            , MinimumLength = 1
             , ErrorMessage = "Content cannot be less than 5 characters long")]
         public string Content { get; set; }
 
