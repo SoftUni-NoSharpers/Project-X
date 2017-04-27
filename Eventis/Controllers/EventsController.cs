@@ -129,7 +129,7 @@ namespace Eventis.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Event events = db.Events.Find(id);
-            if (events == null)
+            if (events == null || !IsAuthorized(events))
             {
                 return HttpNotFound();
             }
@@ -164,14 +164,13 @@ namespace Eventis.Controllers
             return View(ev);
         }
 
-        // POST: Events/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Event events)
         {
+            
+
             var cat = string.Format("{0}",Request.Form["mycat"]);
             var city = string.Format("{0}", Request.Form["mycity"]);
             var gener = string.Format("{0}", Request.Form["mygen"]);
@@ -186,6 +185,10 @@ namespace Eventis.Controllers
             events.StartDate = date;
             if (ModelState.IsValid)
             {
+                if (events == null || !IsAuthorized(events))
+                {
+                    return HttpNotFound();
+                }
                 db.Entry(events).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Details", "Events", new { Id = events.Id });
@@ -208,7 +211,7 @@ namespace Eventis.Controllers
                 .Include(e => e.Comments)
                 .First();
 
-            if (events == null)
+            if (events == null || !IsAuthorized(events))
             {
                 return HttpNotFound();
             }
@@ -235,11 +238,17 @@ namespace Eventis.Controllers
 
         // POST: Events/Delete/5
 
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+           
             Event events = db.Events.Find(id);
+            if (events == null || !IsAuthorized(events))
+            {
+                return HttpNotFound();
+            }
             db.Events.Remove(events);
             db.SaveChanges();
             return RedirectToAction("/../Home/ListAll");
@@ -252,6 +261,13 @@ namespace Eventis.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        private bool IsAuthorized(Event Event)
+        {
+            var IsAdmin = this.User.IsInRole("Administrators");
+            var isAuthor = Event.IsAuthor(this.User.Identity.GetUserId());
+
+            return IsAdmin || isAuthor;
         }
     }
 }

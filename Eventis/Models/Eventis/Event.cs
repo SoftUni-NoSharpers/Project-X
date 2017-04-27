@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web;
+using Microsoft.AspNet.Identity;
 
 namespace Eventis.Models.Eventis
 {
@@ -62,5 +64,10 @@ namespace Eventis.Models.Eventis
 
         [ForeignKey("HallId")]
         public virtual Hall Hall { get; set; }
+
+        public bool IsAuthor(string authorId)
+        {
+            return /*HttpContext.Current.User.Identity.GetUserId()*/this.AuthorId == authorId;
+        }
     }
 }
