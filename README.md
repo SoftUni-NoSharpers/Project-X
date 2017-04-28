@@ -1,6 +1,7 @@
 # Project-X
 Teamwork SoftUni
 
+
 Site for Events 
 Two user roles - Admin(Manual added)/User(Everybody can register by email and password)
 
